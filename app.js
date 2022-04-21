@@ -33,7 +33,7 @@ Add a New Project
                 if (descriptionInput) {
                     return true;
                 } else {
-                    console.log('Please enter your name!');
+                    console.log('Please enter a project description!');
                     return false;
                 }
             }
@@ -52,7 +52,7 @@ Add a New Project
                 if (linkInput) {
                     return true;
                 } else {
-                    console.log('Please enter your name!');
+                    console.log('Please enter a Github link!');
                     return false;
                 }
             }            
@@ -109,9 +109,22 @@ const promptUser = () => {
             }
         },
         {
+            type:'confirm',
+            name: 'confirmAbout',
+            message: 'Would you like to enter some information about yourself for an "About" section?',
+            default: true,
+        },
+        {
             type: 'input',
             name: 'about',
-            message: 'Provide some information about yourself:'
+            message: 'Provide some information about yourself:',
+            when: ({ confirmAbout }) => {
+                if (confirmAbout) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
         }
     ]);
 };
